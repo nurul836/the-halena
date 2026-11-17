@@ -1,0 +1,11 @@
+import {HorizontalLogo} from './BrandLogo';
+import { Link, Outlet } from 'react-router-dom';
+import { SidebarNavigation, MobileNavigation } from './navigation';
+import { business } from '../config/business';
+import { featuredServices } from '../data/home';
+export function Footer() {
+ return <footer className="luxury-footer"><div className="footer-editorial"><div className="footer-brand"><Link to="/" className="brand-home footer-logo" aria-label="THE HALENA home"><HorizontalLogo/></Link><p>Extraordinary living environments, imagined through thoughtful interiors, timeless materials and intelligent design.</p></div><div><h2>Explore</h2><nav aria-label="Footer navigation">{[['/','Home'],['/about','Our Studio'],['/services','Services'],['/projects','Concept Projects'],['/materials','Material Library'],['/material-try-on','Material Try-On'],['/ai-studio','AI Studio'],['/contact','Contact']].map(([to,label])=><Link key={to} to={to}>{label}</Link>)}</nav></div><div><h2>Our disciplines</h2><nav aria-label="Footer services">{featuredServices.map(s=><Link key={s.slug} to={`/services#${s.slug}`}>{s.title}</Link>)}</nav></div><div className="footer-contact"><h2>Start a conversation</h2>{business.email?<a href={`mailto:${business.email}`}>{business.email}</a>:<p>{business.contactPlaceholder}</p>}<Link to="/contact">Begin your project ↗</Link>{business.socials.length>0&&<div className="social-links">{business.socials.map(s=><a key={s.label} href={s.url} target="_blank" rel="noopener noreferrer">{s.label} ↗</a>)}</div>}</div></div><div className="footer-bottom"><span>© {new Date().getFullYear()} THE HALENA</span><span>Considered spaces. Enduring impressions.</span><div><Link to="/privacy-policy">Privacy Policy</Link><Link to="/terms-of-service">Terms of Service</Link></div></div><p className="footer-credits">Architectural and material imagery: Unsplash reference photography. Concept studies and texture references do not represent completed THE HALENA commissions or supplier products.</p></footer>;
+}
+export function AppLayout() {
+ return <><a href="#main-content" className="skip-link">Skip to content</a><SidebarNavigation/><MobileNavigation/><div className="app-content"><main id="main-content" tabIndex={-1}><Outlet/></main><Footer/></div></>;
+}

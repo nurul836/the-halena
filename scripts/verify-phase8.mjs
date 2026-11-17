@@ -1,0 +1,23 @@
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {validateEnvironment} from './environment.mjs';
+
+assert.deepEqual(validateEnvironment({}),[]);
+assert.ok(validateEnvironment({VERCEL_ENV:'production'}).some(e=>e.includes('VITE_SITE_URL')));
+assert.ok(validateEnvironment({VITE_OPENAI_API_KEY:'test-only'}).some(e=>e.includes('Unapproved')));
+const jwt=role=>['e30',Buffer.from(JSON.stringify({role})).toString('base64url'),'test'].join('.');
+assert.ok(validateEnvironment({VITE_SUPABASE_URL:'https://project.supabase.co',VITE_SUPABASE_ANON_KEY:jwt('service_role')}).some(e=>e.includes('never')));
+assert.deepEqual(validateEnvironment({VITE_SUPABASE_URL:'https://project.supabase.co',VITE_SUPABASE_ANON_KEY:jwt('anon')}),[]);
+assert.ok(validateEnvironment({AI_ENABLED:'true'}).length>=7);
+assert.ok(validateEnvironment({VITE_SITE_URL:'https://user:password@example.com'}).length);
+assert.ok(validateEnvironment({VITE_SITE_URL:'https://example.com/path'}).length);
+const config=JSON.parse(await readFile('vercel.json','utf8'));
+assert.equal(config.framework,'vite');assert.equal(config.outputDirectory,'dist');assert.equal(config.installCommand,'npm ci');
+assert.ok(config.functions['api/ai.ts']);assert.ok(config.functions['api/cleanup.ts']);
+const privacy=await readFile('dist/privacy-policy.html','utf8');
+assert.match(privacy,/Optional AI processing/);assert.match(privacy,/Supabase/);assert.match(privacy,/OpenAI/);assert.match(privacy,/scheduled deletion/i);
+assert.doesNotMatch(privacy,/does not include.*accounts or persistent/);
+const terms=await readFile('dist/terms-of-service.html','utf8');assert.match(terms,/not construction drawings/);
+const contact=await readFile('dist/contact.html','utf8');assert.match(contact,/Submission not enabled/);assert.match(contact,/nothing is sent to THE HALENA/);
+const ignores=await readFile('.gitignore','utf8');for(const item of ['node_modules/','dist/','.env*','!.env.example','.vercel/','outputs/'])assert.ok(ignores.includes(item));
+console.log('PASS: production environment guards, public secret-key rejection, Vercel settings, factual privacy/terms notices, honest contact delivery state and repository exclusions. Live deployment and browser interactions are not claimed.');

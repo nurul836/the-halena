@@ -1,0 +1,7 @@
+import {useState} from 'react';
+import {UserRound} from 'lucide-react';
+import {useAuth} from './AuthProvider';
+import {initials,trustedOAuthAvatar} from './validation';
+const safeName=(value:unknown)=>typeof value==='string'?value.slice(0,80):'';
+export function AccountAvatar(){const {user,profile,avatarUrl}=useAuth();const [failed,setFailed]=useState('');const source=avatarUrl||trustedOAuthAvatar(user);const name=profile?.display_name||safeName(user?.user_metadata?.full_name)||user?.email||'H';return <span className="account-avatar">{source&&source!==failed?<img src={source} alt="" referrerPolicy="no-referrer" onError={()=>setFailed(source)}/>:initials(String(name))}</span>;}
+export function AccountButton({mobile=false,onOpen}:{mobile?:boolean;onOpen?:()=>void}){const auth=useAuth();return <button className={`sidebar-account ${mobile?'mobile-account':''}`} aria-label={auth.loading?'Loading account':auth.user?'Open account menu':'Sign In / Create Account'} aria-haspopup="dialog" disabled={auth.loading} onClick={()=>{onOpen?.();auth.open(auth.user?'menu':'signin');}}>{auth.user?<AccountAvatar/>:<UserRound aria-hidden="true" size={20} strokeWidth={1.5}/>}<span className="account-summary"><strong>{auth.loading?'Loading account…':auth.user?auth.profile?.display_name||safeName(auth.user.user_metadata?.full_name)||'My account':'Sign In / Create Account'}</strong>{auth.user&&<small>{auth.user.email}</small>}</span></button>;}

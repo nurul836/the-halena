@@ -1,0 +1,25 @@
+node_modules/
+dist/
+outputs/
+*.tsbuildinfo
+.env*
+!.env.example
+.vercel/
+.openai/
+coverage/
+*.log
+.npmrc
+*.pem
+*.key
+*.p12
+*.pfx
+.DS_Store
+Thumbs.db
+# Local credentials and private uploads are never project source.
+.aws/
+.ssh/
+credentials*.json
+service-account*.json
+client_secret*.json
+uploads/
+private-uploads/

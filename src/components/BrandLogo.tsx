@@ -1,0 +1,7 @@
+type LogoProps={variant?:'light'|'dark';className?:string};
+const ink=(variant:LogoProps['variant'])=>variant==='dark'?'#080b0d':'#f5f2eb';
+/** Two architectural piers, fine capitals and an inset teal crossbeam. */
+function Mark({color}:{color:string}){return <><path fill={color} d="M14 12h6v40h-6zM44 12h6v40h-6zM9 11h16v2H9zM39 11h16v2H39zM9 51h16v2H9zM39 51h16v2H39zM20 30h24v2H20z"/><path fill="#0e7e81" d="M24 34h16v2H24z"/></>;}
+export function MonogramLogo({variant='light',className=''}:LogoProps){return <svg className={`halena-monogram ${className}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="40" height="40" aria-hidden="true" focusable="false"><Mark color={ink(variant)}/></svg>;}
+export function LogoWordmark({variant='light',className=''}:LogoProps){return <svg className={`halena-wordmark ${className}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 40" width="166" height="35" aria-hidden="true" focusable="false"><text x="0" y="28" fill={ink(variant)} fontFamily="Cormorant Garamond, Georgia, serif" fontSize="25" letterSpacing="2">THE HALENA</text></svg>;}
+export function HorizontalLogo({variant='light',className=''}:LogoProps){return <svg className={`halena-horizontal ${className}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 278 64" width="244" height="56" aria-hidden="true" focusable="false"><Mark color={ink(variant)}/><text x="78" y="40" fill={ink(variant)} fontFamily="Cormorant Garamond, Georgia, serif" fontSize="26" letterSpacing="2">THE HALENA</text></svg>;}

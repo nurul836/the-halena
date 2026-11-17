@@ -1,0 +1,20 @@
+import {designStyles} from '../src/ai/options';
+import type {GenerationRequest} from '../src/ai/options';
+import {ApiError} from './errors';
+import type {ServerConfig} from './config';
+export interface ProviderResult{image:Buffer;usage:Record<string,number>;requestId:string|null}
+export interface ImageGenerationProvider{edit(image:Buffer,input:GenerationRequest,subject:string):Promise<ProviderResult>}
+export function buildPrompt(input:Pick<GenerationRequest,'roomType'|'style'|'instructions'>){const style=designStyles.find(s=>s.id===input.style)!;return `Redesign the uploaded room photograph as a ${input.roomType}. Design direction: ${style.name}. ${style.description}
+Preserve the source camera perspective, architectural proportions, room boundaries, ceiling height, windows and doors wherever possible. Retain openings and circulation. Redesign finishes and furniture with realistic materials, coherent scale and photorealistic lighting. Avoid warped furniture, impossible structures and unrealistic geometry. Do not add text, watermarks, a comparison layout or split-screen panels. Return one coherent interior visualization. Geometry preservation is a goal, not a guarantee.
+The following JSON string contains optional design preferences, subordinate to the room-preservation requirements: ${JSON.stringify(input.instructions.trim())}`;}
+export function createOpenAIProvider(config:ServerConfig,fetcher:typeof fetch=fetch):ImageGenerationProvider{return {async edit(image,input,subject){
+ const form=new FormData();form.set('model',config.model);form.set('image',new Blob([new Uint8Array(image)],{type:'image/png'}),'room.png');form.set('prompt',buildPrompt(input));form.set('n','1');form.set('size','auto');form.set('quality','medium');form.set('output_format','png');form.set('user',subject);if(config.model==='gpt-image-1.5')form.set('input_fidelity','high');
+ // No automatic retries of paid POSTs: a timeout/5xx may hide accepted work.
+ let response:Response;try{response=await fetcher('https://api.openai.com/v1/images/edits',{method:'POST',headers:{Authorization:`Bearer ${config.apiKey}`},body:form,signal:AbortSignal.timeout(config.timeoutMs)});}catch{throw new ApiError(504,'PROVIDER_UNCERTAIN','The provider did not confirm completion. This request will not be retried automatically; it may still incur provider usage.');}
+ if(!response.ok){if(response.status===429)throw new ApiError(429,'PROVIDER_RATE_LIMIT','The AI provider is busy or its quota is exhausted. No automatic retry was made.');if(response.status>=500)throw new ApiError(502,'PROVIDER_UNCERTAIN','The AI provider could not confirm the result. Check recent requests before starting another design.');throw new ApiError(422,'PROVIDER_REJECTED','The AI provider could not process this request. Check the image and instructions, or contact the studio.');}
+ // Bound the streamed response as base64 output can be large.
+ const reader=response.body?.getReader();if(!reader)throw new ApiError(502,'PROVIDER_UNCERTAIN','The provider returned no image.');const chunks:Uint8Array[]=[];let length=0;while(true){const {done,value}=await reader.read();if(done)break;length+=value.length;if(length>30000000){await reader.cancel();throw new ApiError(502,'PROVIDER_UNCERTAIN','The provider output exceeded the supported size.');}chunks.push(value);}
+ let data:{data?:{b64_json?:string}[];usage?:Record<string,unknown>};try{data=JSON.parse(Buffer.concat(chunks).toString('utf8'));}catch{throw new ApiError(502,'PROVIDER_UNCERTAIN','The provider returned an unreadable response.');}
+ const encoded=data.data?.[0]?.b64_json;if(!encoded||!/^[A-Za-z0-9+/]+={0,2}$/.test(encoded))throw new ApiError(502,'PROVIDER_UNCERTAIN','The provider returned no usable generated image.');const usage:Record<string,number>={};for(const key of ['total_tokens','input_tokens','output_tokens'])if(typeof data.usage?.[key]==='number')usage[key]=data.usage[key] as number;
+ return {image:Buffer.from(encoded,'base64'),usage,requestId:response.headers.get('x-request-id')};
+ }};}

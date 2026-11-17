@@ -1,0 +1,113 @@
+.tryon-studio{--editor-line:#f5f2eb24;color:#f5f2eb;background:#080b0d}.editor-intro{padding:55px 5% 45px;display:grid;grid-template-columns:1fr auto;gap:35px;border-bottom:1px solid var(--editor-line)}.editor-intro>.wordmark{grid-column:1/-1;font-size:23px}.editor-intro h1{font-size:clamp(45px,5vw,76px);line-height:.98;margin:18px 0}.editor-intro h1 em{font-weight:400;color:#adc4c2}.editor-intro p{color:#a0aaac;font-size:13px}.local-badge{align-self:end;font-size:10px;letter-spacing:.08em;border:1px solid #0e7e8166;padding:11px 15px;color:#a8d3d0}.editor-shell{padding:0 4% 70px}.editor-toolbar{display:flex;justify-content:space-between;gap:15px;padding:23px 0;border-bottom:1px solid var(--editor-line);flex-wrap:wrap}.editor-toolbar>div{display:flex;gap:8px;flex-wrap:wrap}.tryon-studio button,.tryon-studio select,.tryon-studio input{font:inherit}.tryon-studio button{cursor:pointer;color:#d7deda;background:#101619;border:1px solid var(--editor-line);padding:11px 14px;min-height:42px;font-size:11px;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:border-color .2s,background .2s}.tryon-studio button:hover:not(:disabled){border-color:#4c9997;background:#152426}.tryon-studio button:disabled{opacity:.4;cursor:not-allowed}.tryon-studio button:focus-visible,.tryon-studio a:focus-visible,.tryon-studio input:focus-visible,.tryon-studio select:focus-visible,.tryon-studio summary:focus-visible{outline:2px solid #65c3c0;outline-offset:4px}.tryon-studio .editor-download,.tryon-studio .select-surface{background:#0e7e81;color:#fff;border-color:#0e7e81}.editor-columns{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:30px;padding:30px 0}.editor-image-column{min-width:0}.room-drop-zone{background:#101619;border:1px solid var(--editor-line);min-height:300px;display:grid;align-content:center;overflow:hidden}.room-drop-zone.drag-over{outline:2px solid #4cbbb6;outline-offset:-3px}.tryon-studio .room-drop-prompt{display:flex;flex-direction:column;border:0;background:radial-gradient(ellipse at center,#172729,#101619 70%);min-height:450px;gap:20px;padding:50px 25px}.room-drop-prompt strong{font:400 36px 'Cormorant Garamond',serif}.room-drop-prompt span,.room-drop-prompt small{color:#a0aaac;line-height:1.8}.room-drop-prompt small{font-size:10px}.editor-stage{position:relative;width:100%;user-select:none}.editor-stage.drawing{cursor:crosshair;touch-action:none}.editor-stage canvas{display:block;width:100%;height:100%}.surface-outlines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}.surface-outlines polygon,.surface-outlines polyline{fill:none;stroke:#e5ecec77;stroke-width:1.5;vector-effect:non-scaling-stroke}.surface-outlines .active{stroke:#6de1db;stroke-width:2}.surface-outlines .draft{stroke:#eae7d8;stroke-dasharray:5 4;stroke-width:2}.tryon-studio .surface-point,.draft-point{position:absolute;transform:translate(-50%,-50%);border:2px solid #a4eeeb;border-radius:50%;width:32px;height:32px;min-height:32px;padding:0;font-size:10px;background:#0e7e81;color:white;touch-action:none;display:grid;place-items:center;z-index:2}.draft-point{width:23px;height:23px;min-height:23px;border-color:#fff;pointer-events:none}.room-file-tools{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:18px}.room-file-tools label{font-size:11px;color:#a8d3d0;cursor:pointer}.room-file-tools input{max-width:100%;font-size:10px;width:220px}.room-file-tools input::file-selector-button{background:#172023;border:1px solid #465052;color:white;padding:9px;margin-right:8px}.editor-privacy,.editor-hint,.editor-limitations{font-size:11px;color:#9ca9a9;line-height:1.8}.editor-status{font-size:12px;line-height:1.6;color:#aed6d2;min-height:18px;margin-top:20px}.editor-error{font-size:12px;line-height:1.6;color:#edbbac}.editor-privacy{max-width:700px;margin-top:20px}.drawing-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px;align-items:center}.drawing-actions>span{width:100%;font-size:11px;color:#a0aaac}.editor-controls{background:#101619;border:1px solid var(--editor-line);align-self:start;min-width:0}.editor-controls summary{display:flex;justify-content:space-between;padding:20px;font-size:12px;cursor:pointer;list-style:none}.editor-controls summary::-webkit-details-marker{display:none}.control-content{padding:10px 22px 25px}.control-content>.eyebrow{font-size:9px;line-height:1.7}.surface-kind{display:flex;gap:8px;margin:18px 0 12px}.surface-kind button{flex:1}.surface-kind button[aria-pressed=true]{border-color:#3eaaa7;color:#b5eeeb}.select-surface{width:100%}.editor-select{display:grid;gap:10px;margin:20px 0;font-size:11px}.editor-select select{width:100%;min-width:0;color:#f5f2eb;background:#172023;border:1px solid var(--editor-line);padding:10px;font-size:11px}.control-divider{height:1px;background:var(--editor-line);margin:28px 0}.editor-selected{display:flex;gap:12px;margin-top:20px}.editor-selected img{width:65px;height:75px;object-fit:cover}.editor-selected strong{display:block;font:400 21px 'Cormorant Garamond',serif;line-height:1.15}.editor-selected small{display:block;font-size:9px;color:#a0aaac;line-height:1.6;margin-top:10px}.editor-unavailable{font-size:11px;color:#d2bda1;line-height:1.8}.editor-change{display:block;font-size:11px;color:#add9d5;margin:20px 0}.editor-range{display:grid;gap:12px;margin:20px 0;font-size:11px}.editor-range>span{display:flex;justify-content:space-between;gap:10px}.editor-range output{color:#a4cbc8;font-variant-numeric:tabular-nums}.editor-range input{width:100%;accent-color:#0e7e81;height:22px;cursor:pointer}.editor-range input:disabled{cursor:not-allowed;opacity:.4}.studio-material-browser{border-top:1px solid var(--editor-line);padding-top:40px;scroll-margin-top:20px}.material-browser-heading{display:flex;justify-content:space-between;gap:25px;align-items:center}.material-browser-heading h2{font-size:40px;line-height:1.2;margin:12px 0}.material-browser-heading input{width:270px;max-width:100%;padding:13px 0;color:#f5f2eb;background:transparent;border:0;border-bottom:1px solid var(--editor-line);font-size:12px}.studio-material-rail{display:flex;overflow-x:auto;gap:16px;padding:15px 0 25px;scroll-snap-type:x proximity}.tryon-studio .studio-material-option{display:flex;flex:0 0 210px;align-items:stretch;justify-content:start;flex-direction:column;text-align:left;padding:0 0 15px;gap:0;scroll-snap-align:start;position:relative;overflow:hidden}.studio-material-option img{width:100%;height:155px;object-fit:cover;transition:transform .5s}.studio-material-option:hover img{transform:scale(1.03)}.studio-material-option>span,.studio-material-option>strong,.studio-material-option>small{margin:12px 14px 0}.studio-material-option .eyebrow{font-size:8px;line-height:1.6}.studio-material-option strong{font:400 24px 'Cormorant Garamond',serif}.studio-material-option small{font-size:10px;color:#a0aaac}.studio-material-option[aria-pressed=true]{border-color:#54c4bf;box-shadow:inset 0 -2px #0e7e81}.texture-readiness{font-size:9px;color:#bad4d0}.editor-limitations{border-top:1px solid var(--editor-line);padding-top:25px;margin-top:25px;max-width:900px}
+@media(max-width:1100px){.editor-columns{grid-template-columns:minmax(0,1fr) 280px;gap:18px}.editor-shell{padding-inline:3%}.control-content{padding-inline:16px}.room-drop-zone{min-height:200px}.tryon-studio .room-drop-prompt{min-height:340px}}
+@media(max-width:760px){.editor-intro{padding:70px 6% 30px;grid-template-columns:1fr;gap:22px}.editor-intro>.wordmark{grid-column:auto;font-size:20px}.local-badge{justify-self:start}.editor-shell{padding-inline:5%}.editor-columns{grid-template-columns:1fr;gap:25px;padding-top:20px}.room-drop-zone{min-height:160px}.editor-toolbar{gap:12px}.editor-toolbar button{padding:10px;font-size:10px}.editor-download{width:100%}.tryon-studio .surface-point{width:44px;height:44px;min-height:44px}.material-browser-heading{display:block}.material-browser-heading input{width:100%;font-size:16px}.editor-select select{font-size:16px}.editor-controls summary{min-height:56px}.control-content{padding:15px 22px 25px}.editor-range{margin:25px 0}.editor-range input{height:32px}.studio-material-browser{scroll-margin-top:65px}.room-file-tools input{font-size:11px}.editor-intro h1{font-size:52px}}
+@media(prefers-reduced-motion:reduce){.tryon-studio button,.studio-material-option img{transition:none}.studio-material-option:hover img{transform:none}}
+.tryon-steps{list-style:none;margin:0;padding:24px 0;display:flex;gap:16px 30px;flex-wrap:wrap;color:#a0aaac;font-size:12px;border-bottom:1px solid var(--editor-line)}
+.tryon-steps [aria-current=step]{color:#a4eeeb}
+.quick-surface{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.quick-surface>span{width:100%;font-size:12px;color:#c6d6d3}
+.quick-surface>p{width:100%;font-size:11px}
+.editor-image-column .studio-material-browser{margin-top:25px;padding-top:25px;min-width:0}
+.editor-image-column .material-browser-heading{flex-wrap:wrap;gap:10px}
+.editor-image-column .studio-material-option{flex-basis:185px}
+.editor-image-column .studio-material-rail{max-width:100%;overscroll-behavior-x:contain}
+.editor-controls .editor-hint{margin-block:12px}
+@media(max-width:760px){.tryon-steps{font-size:11px;gap:14px}.quick-surface button{min-height:44px}.editor-image-column .studio-material-browser h2{font-size:32px}}
+
+.studio-material-option.reference-only img{opacity:.55}.preview-filter{display:flex;align-items:center;gap:10px;font-size:12px;margin:18px 0}.preview-filter input{accent-color:#0e7e81}
+
+/* Room-first visualizer: presentation only, canvas coordinates remain image-relative. */
+.tryon-studio .editor-intro{padding:42px 4% 24px;gap:20px;align-items:center;border:0;animation:tryon-enter .45s ease-out both}
+.tryon-studio .editor-intro h1{font-size:clamp(38px,4.6vw,66px);line-height:1.05;margin:12px 0}
+.tryon-studio .editor-intro p{font-size:14px;margin:0;line-height:1.7}
+.tryon-studio .local-badge{align-self:center;border-radius:30px;white-space:nowrap}
+.tryon-studio .editor-shell{max-width:1500px;margin-inline:auto}
+.tryon-studio .tryon-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;padding:18px 0;font-size:11px}
+.tryon-studio .tryon-steps li{padding:12px 0;border-top:2px solid #ffffff15;line-height:1.6}
+.tryon-studio .tryon-steps [aria-current=step]{border-color:#0e7e81}
+.tryon-studio .editor-toolbar{padding:16px 0;border:0}
+.tryon-studio button{border-radius:8px;min-height:44px;font-size:12px}
+.tryon-studio .editor-columns{display:block;padding:8px 0}
+.tryon-studio .quick-surface{justify-content:space-between;margin:0 0 18px;gap:12px}
+.tryon-studio .quick-surface p{font-size:14px;color:#d5dfdb;margin:8px 0 0;line-height:1.5}
+.tryon-studio .surface-kind{margin:0;min-width:190px}
+.tryon-studio .surface-kind button{padding-inline:24px;flex:1}
+.tryon-studio .surface-kind button[aria-pressed=true]{background:#0e7e8130;border-color:#0e7e81;color:#f5f2eb}
+.tryon-studio .room-drop-zone{border-radius:14px;min-height:0;box-shadow:0 16px 60px #0003}
+.tryon-studio .room-drop-prompt{min-height:clamp(280px,46vh,500px);gap:16px}
+.tryon-studio .room-drop-prompt strong{font-size:clamp(30px,3vw,42px)}
+.tryon-studio .editor-stage{animation:tryon-enter .3s ease-out}
+.tryon-studio .surface-point{border-radius:50%;min-height:32px;font-size:11px}
+.tryon-studio .room-file-tools{margin-top:14px;gap:8px}
+.tryon-studio .room-file-tools input[hidden]{display:none}
+.tryon-studio .editor-status:empty,.tryon-studio .editor-error:empty{display:none}
+.tryon-studio .editor-status{margin:14px 0 0;animation:tryon-enter .25s ease-out}
+.tryon-studio .editor-privacy{margin:14px 0;font-size:11px}
+.tryon-studio .drawing-actions{padding:16px;background:#101b1e;border:1px solid #0e7e8155;border-radius:10px}
+.tryon-studio .drawing-actions button:nth-last-child(2){background:#0e7e81;color:white}
+.tryon-studio .surface-context{display:flex;gap:12px 24px;flex-wrap:wrap;font-size:12px;color:#a0aaac;margin:16px 0}
+.tryon-studio .surface-context strong{color:#f5f2eb;font-weight:500}
+.tryon-studio .surface-options{border-top:1px solid var(--editor-line);margin:14px 0}
+.tryon-studio .surface-options summary{cursor:pointer;padding:16px 0;color:#c2cecb;font-size:12px;min-height:48px}
+.tryon-studio .surface-option-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding-bottom:18px}
+.tryon-studio .surface-option-actions .editor-select{margin:0;display:flex;align-items:center;min-width:0}
+.tryon-studio .editor-controls{border-radius:10px;margin:16px 0 30px}
+.tryon-studio .editor-controls summary{min-height:56px;align-items:center}
+.tryon-studio .editor-controls[open] summary svg{transform:rotate(45deg)}
+.tryon-studio .editor-controls summary svg{transition:transform .25s}
+.tryon-studio .control-content{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 32px;padding:0 24px 24px;animation:tryon-enter .22s ease-out}
+.tryon-studio .control-content .editor-hint{grid-column:1/-1;margin:0;max-width:720px}
+.tryon-studio .editor-range{margin:14px 0}
+.tryon-studio .editor-range input{min-height:32px}
+.tryon-studio .studio-material-browser{margin-top:32px;padding-top:32px}
+.tryon-studio .material-browser-heading h2{font-size:clamp(32px,3.5vw,46px);margin:10px 0}
+.tryon-studio .material-browser-heading input{border:1px solid var(--editor-line);border-radius:8px;padding:13px 16px;background:#101619;min-height:46px}
+.tryon-studio .tryon-categories{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 12px}
+.tryon-studio .tryon-categories button{border-radius:24px;padding:10px 18px;background:transparent}
+.tryon-studio .tryon-categories button[aria-pressed=true]{background:#0e7e8133;border-color:#0e7e81;color:#f5f2eb}
+.tryon-studio .studio-material-rail{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));overflow:visible;gap:18px;scroll-snap-type:none;padding:12px 0 24px}
+.tryon-studio .studio-material-option{min-width:0;width:100%;border-radius:10px;border:1px solid var(--editor-line);background:#101619;padding:0 0 18px;display:flex;flex-direction:column;overflow:hidden;align-items:stretch;text-align:left;position:relative}
+.tryon-studio .studio-material-option img{height:auto;aspect-ratio:1.4;object-fit:cover;width:100%}
+.tryon-studio .studio-material-option strong{font-size:24px;line-height:1.15}
+.tryon-studio .studio-material-option small{line-height:1.65}
+.tryon-studio .studio-material-option:disabled{opacity:.65}
+.tryon-studio .studio-material-option[aria-pressed=true]::after{content:'Selected';position:absolute;top:12px;right:12px;border-radius:30px;padding:7px 12px;background:#0e7e81;color:white;font-size:10px}
+.tryon-studio .texture-readiness{font-size:10px;color:#a8d8d2}
+.tryon-studio .tryon-reference{border-top:1px solid var(--editor-line);margin-top:20px;padding-top:24px}
+.tryon-studio .tryon-reference h3{font-size:27px;font-weight:400;margin:0}
+.tryon-studio .reference-only a{margin:16px 14px 0;color:#b2d5d2;font-size:12px;min-height:44px;display:flex;align-items:center}
+.tryon-studio .preview-filter{min-height:44px;margin:8px 0}
+.tryon-studio .preview-filter input{width:18px;height:18px}
+@keyframes tryon-enter{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media(max-width:1100px){.tryon-studio .studio-material-rail{grid-template-columns:repeat(3,minmax(0,1fr))}.tryon-studio .editor-intro{grid-template-columns:1fr}.tryon-studio .local-badge{justify-self:start}}
+@media(max-width:768px){.tryon-studio .editor-intro{padding:82px 5% 18px;gap:16px}.tryon-studio .tryon-steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 16px}.tryon-studio .control-content{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 24px}.tryon-studio .studio-material-rail{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.tryon-studio .surface-point{width:44px;height:44px;min-height:44px}.tryon-studio .quick-surface{align-items:stretch}.tryon-studio .quick-surface>div:first-child{width:100%}.tryon-studio .surface-kind{width:100%}.tryon-studio .material-browser-heading>label{width:100%}.tryon-studio .material-browser-heading input{width:100%}.tryon-studio .editor-download{width:100%}.tryon-studio .studio-material-option strong{font-size:22px}}
+@media(max-width:420px){.tryon-studio .control-content{grid-template-columns:1fr;padding:0 16px 20px}.tryon-studio .studio-material-option>span,.tryon-studio .studio-material-option>strong,.tryon-studio .studio-material-option>small{margin-inline:10px}.tryon-studio .studio-material-option strong{font-size:21px}.tryon-studio .tryon-categories{gap:6px}.tryon-studio .tryon-categories button{padding-inline:13px;font-size:11px}.tryon-studio .local-badge{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.tryon-studio .editor-intro,.tryon-studio .editor-stage,.tryon-studio .control-content,.tryon-studio .editor-status{animation:none}.tryon-studio .editor-controls summary svg{transition:none}}
+
+/* Compact presentation: the stage, bitmap and handles share one fitted rectangle. */
+.tryon-studio{--preview-height:480px}
+.tryon-studio .compact-workspace{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,310px);gap:28px;align-items:start;margin:20px 0 28px}
+.tryon-studio .compact-preview{min-width:0}
+.tryon-studio .room-drop-zone{width:100%;max-width:850px;max-height:var(--preview-height);margin-inline:auto;justify-items:center;border-radius:10px}
+.tryon-studio .editor-stage{width:min(100%,850px,calc((var(--preview-height) - 2px) * var(--room-ratio)));height:auto;margin-inline:auto;animation:none;transform:none}
+.tryon-studio .editor-stage canvas{width:100%;height:100%;object-fit:contain}
+.tryon-studio .room-drop-prompt{width:100%;min-height:300px;max-height:var(--preview-height);padding:32px 20px}
+.tryon-studio .compact-surface-controls{min-width:0;background:#101619;border:1px solid var(--editor-line);border-radius:10px;padding:20px}
+.tryon-studio .compact-surface-controls .quick-surface{display:block}
+.tryon-studio .compact-surface-controls .surface-kind{margin-top:18px;min-width:0;gap:8px}
+.tryon-studio .compact-surface-controls .surface-kind button{padding-inline:10px}
+.tryon-studio .compact-surface-controls .drawing-actions{padding:12px;gap:8px}
+.tryon-studio .compact-surface-controls .surface-option-actions{align-items:stretch;flex-direction:column}
+.tryon-studio .compact-surface-controls .editor-select{flex-wrap:wrap}
+.tryon-studio .compact-surface-controls .surface-context{line-height:1.6}
+.tryon-studio .compact-material-actions{border-top:1px solid var(--editor-line);margin-top:16px;padding-top:4px}
+.tryon-studio .compact-material-actions>button{width:100%;background:#0e7e81;color:#fff}
+.tryon-studio .editor-intro{padding-block:30px 14px}
+.tryon-studio .editor-intro h1{font-size:clamp(36px,4vw,56px)}
+.tryon-studio .editor-toolbar{border-top:1px solid var(--editor-line);margin-top:20px;padding-block:20px}
+.tryon-studio .studio-material-option{transition:border-color .2s,background .2s}
+.tryon-studio .studio-material-option strong{overflow-wrap:anywhere}
+@media(min-width:769px) and (max-width:1100px){.tryon-studio{--preview-height:400px}.tryon-studio .compact-workspace{grid-template-columns:minmax(0,1fr) 270px;gap:18px}.tryon-studio .compact-surface-controls{padding:16px}}
+@media(max-width:768px){.tryon-studio{--preview-height:400px}.tryon-studio .compact-workspace{grid-template-columns:minmax(0,1fr);gap:18px}.tryon-studio .compact-surface-controls .quick-surface{display:flex}.tryon-studio .editor-intro{padding-top:76px}.tryon-studio .room-drop-prompt{min-height:260px}}
+@media(max-width:600px){.tryon-studio{--preview-height:300px}.tryon-studio .compact-surface-controls{padding:16px}.tryon-studio .room-drop-prompt{min-height:240px}}
+@media(prefers-reduced-motion:reduce){.tryon-studio .studio-material-option{transition:none}}

@@ -1,0 +1,32 @@
+/* Navigation-only floating glass treatment; the content gutter never expands. */
+@media(min-width:769px){.app-content{margin-left:100px}.skip-link{left:112px}}
+.sidebar.glass-sidebar{inset:16px auto auto 16px;width:68px;max-height:calc(100dvh - 32px);padding:12px 8px;align-items:stretch;gap:18px;border:1px solid rgba(255,255,255,.12);border-radius:18px;background:#101619;box-shadow:0 18px 60px #0005, inset 0 1px #ffffff08;transition:width 360ms cubic-bezier(.22,1,.36,1);isolation:isolate}
+.glass-sidebar[data-ready=false]{visibility:hidden;transition:none}
+.sidebar.glass-sidebar[data-expanded=true]{width:250px}
+.glass-brand{height:52px;display:flex;align-items:center;gap:15px;overflow:hidden;flex-shrink:0}
+.glass-monogram{font-family:var(--font-display);font-size:36px;line-height:1;min-width:50px;text-align:center}.glass-monogram span{display:block;width:16px;height:1px;background:#0e7e81;margin:4px auto 0}
+.glass-label{max-width:0;opacity:0;white-space:nowrap;overflow:hidden;transition:opacity 280ms ease,max-width 360ms cubic-bezier(.22,1,.36,1);font-size:12px}
+.glass-sidebar[data-expanded=true] .glass-label{max-width:180px;opacity:1}.glass-sidebar .brand-name{font-family:var(--font-display);font-size:19px;letter-spacing:.13em}
+.sidebar.glass-sidebar nav{width:100%;margin:0;gap:6px;align-items:stretch;min-height:0}
+.glass-sidebar .nav-icon{width:100%;height:44px;min-height:44px;justify-content:flex-start;padding:0 15px;gap:15px;border-radius:10px;color:#a0aaac;flex-shrink:0}
+.glass-sidebar .nav-icon svg,.sidebar-toggle svg{flex-shrink:0}.glass-sidebar .nav-icon:hover{background:#ffffff08;color:#f5f2eb}.glass-sidebar .nav-icon.active{background:#0e7e812b;color:#f5f2eb}.glass-sidebar .nav-icon.active:before{left:-8px;top:14px;bottom:14px;border-radius:2px;background:#0e7e81}.glass-sidebar .nav-icon.active svg{color:#69c1bf}
+.glass-sidebar .tooltip{left:calc(100% + 16px);border-radius:8px;background:#172023;font-size:11px;box-shadow:0 8px 24px #0004}
+.sidebar-toggle{height:44px;flex-shrink:0;display:flex;align-items:center;gap:15px;padding:0 15px;border:0;border-top:1px solid #ffffff12;background:transparent;color:#a0aaac;border-radius:8px}.sidebar-toggle:hover{color:#f5f2eb;background:#ffffff08}.glass-sidebar :focus-visible,.glass-mobile :focus-visible{outline:2px solid #58b8b6;outline-offset:2px}
+@supports ((backdrop-filter:blur(24px)) or (-webkit-backdrop-filter:blur(24px))){.sidebar.glass-sidebar,.glass-mobile .mobile-dialog,.glass-mobile .mobile-trigger{background:rgba(16,22,25,.72);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}}
+@media(min-width:769px) and (max-height:600px){.sidebar.glass-sidebar{gap:8px}.glass-brand{height:38px}.sidebar.glass-sidebar nav{gap:2px;overflow-y:auto;overflow-x:hidden}.glass-sidebar .tooltip{display:none}}
+@media(max-width:768px){.sidebar.glass-sidebar{display:none}.glass-mobile .mobile-trigger{top:16px;right:16px;border:1px solid #ffffff1f;border-radius:14px;box-shadow:0 8px 30px #0004}.glass-mobile .mobile-dialog{inset:16px auto 16px 16px;width:min(350px,calc(100vw - 32px));max-width:calc(100vw - 32px);height:calc(100dvh - 32px);max-height:calc(100dvh - 32px);border:1px solid #ffffff1f;border-radius:18px;background-color:#101619;box-shadow:0 18px 60px #0006}.glass-mobile .drawer{padding:24px 20px}.glass-mobile .drawer nav{margin-top:24px;gap:4px}.glass-mobile .drawer nav a{min-height:48px;border:0;border-radius:10px;padding:12px}.glass-mobile .drawer nav a.active{background:#0e7e812b;color:#b6e3df}.glass-mobile .mobile-dialog[open]{animation:glass-drawer-in 340ms cubic-bezier(.22,1,.36,1)}@supports(backdrop-filter:blur(24px)){.glass-mobile .mobile-dialog{background:rgba(16,22,25,.72)}}}
+@keyframes glass-drawer-in{from{opacity:0;transform:translateX(-16px)}to{opacity:1;transform:translateX(0)}}
+@media(prefers-reduced-motion:reduce){.sidebar.glass-sidebar,.glass-sidebar .glass-label,.glass-sidebar .tooltip{transition:none}.glass-mobile .mobile-dialog[open]{animation:none}}
+
+/* Shared vector identity. Fixed SVG boxes reserve space while fonts load. */
+.glass-logo-slot{width:50px;min-width:50px;height:44px;display:grid;place-items:center}
+.halena-monogram{display:block;width:40px;height:40px;flex-shrink:0;transition:transform 300ms cubic-bezier(.22,1,.36,1)}
+.glass-brand{gap:10px}.glass-brand .brand-name{flex-shrink:0;transform:translateX(-6px);transition:opacity 300ms ease,max-width 360ms cubic-bezier(.22,1,.36,1),transform 360ms cubic-bezier(.22,1,.36,1)}
+.glass-sidebar[data-expanded=true] .brand-name{max-width:166px;transform:translateX(0)}
+.halena-wordmark{display:block;width:166px;height:35px}.halena-horizontal{display:block;width:244px;max-width:100%;height:auto}
+.brand-home{display:inline-flex;align-items:center;max-width:100%}.glass-brand:hover .halena-monogram{transform:translateY(-1px)}
+.brand-home svg{transition:opacity 300ms ease,transform 300ms ease}.brand-home:hover svg{opacity:.88;transform:translateY(-1px)}
+.glass-sidebar[data-ready=true] .glass-logo-slot{animation:halena-logo-in 450ms ease both}
+.footer-logo{width:244px;min-height:56px;margin-bottom:4px}.glass-mobile .mobile-brand{width:210px;min-width:0}.glass-mobile .drawer-top>button{flex-shrink:0}
+@keyframes halena-logo-in{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.halena-monogram,.brand-home svg,.glass-brand .brand-name{transition:none}.glass-sidebar[data-ready=true] .glass-logo-slot{animation:none}.brand-home:hover svg,.glass-brand:hover .halena-monogram{transform:none}}

@@ -1,3 +1,4 @@
+import {assetUrl} from '../config/paths';
 import { useRef } from 'react';
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
@@ -19,14 +20,14 @@ export function AnimatedText({ children }: { children: string }) {
 }
 export function ImageReveal({ src, alt, className = '' }: { src: string; alt: string; className?: string }) {
  const reduced = useReducedMotion();
- return <motion.div className={`image-reveal ${className}`} initial={reduced ? false : { clipPath: 'inset(8% 0 8% 0)', opacity: 0 }} whileInView={{ clipPath: 'inset(0% 0 0% 0)', opacity: 1 }} viewport={{ once: true, amount: .1 }} transition={{ duration: .85 }}><img src={src} alt={alt} loading="lazy" decoding="async" /></motion.div>;
+ return <motion.div className={`image-reveal ${className}`} initial={reduced ? false : { clipPath: 'inset(8% 0 8% 0)', opacity: 0 }} whileInView={{ clipPath: 'inset(0% 0 0% 0)', opacity: 1 }} viewport={{ once: true, amount: .1 }} transition={{ duration: .85 }}><img src={assetUrl(src)} alt={alt} loading="lazy" decoding="async" /></motion.div>;
 }
 export function ParallaxImage({ src, alt }: { src: string; alt: string }) {
  const ref = useRef<HTMLDivElement>(null);
  const reduced = useReducedMotion();
  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
  const y = useTransform(scrollYProgress, [0, 1], ['-4%', '4%']);
- return <div ref={ref} className="parallax-image"><motion.img src={src} alt={alt} loading="lazy" decoding="async" style={{ y: reduced ? 0 : y }} /></div>;
+ return <div ref={ref} className="parallax-image"><motion.img src={assetUrl(src)} alt={alt} loading="lazy" decoding="async" style={{ y: reduced ? 0 : y }} /></div>;
 }
 export function LuxuryButton({ children, to, variant = 'primary' }: { children: ReactNode; to: string; variant?: 'primary' | 'outline' | 'text' }) {
  return <Link className={`luxury-button ${variant}`} to={to}>{children}<ArrowUpRight size={17} strokeWidth={1.4} /></Link>;
@@ -35,7 +36,7 @@ export function SectionHeading({ eyebrow, title, children }: { eyebrow: string; 
  return <Reveal className="section-heading"><span className="eyebrow">{eyebrow}</span><h2>{title}</h2>{children && <p>{children}</p>}</Reveal>;
 }
 export function ProjectCard({ project, index = 0 }: { project: typeof projects[number]; index?: number }) {
- return <Link to={`/projects/${project.slug}`} className="project-card group"><div className="project-image"><img src={project.image} alt={`${project.title} — illustrative interior reference`} loading="lazy" decoding="async" /><span className="image-tag">Concept study</span><span className="round-arrow"><ArrowUpRight size={22} /></span></div><div className="card-meta"><div><span className="eyebrow">{project.category} / Concept {String(index + 1).padStart(2, '0')}</span><h3>{project.title}</h3></div><ArrowUpRight size={20} /></div></Link>;
+ return <Link to={`/projects/${project.slug}`} className="project-card group"><div className="project-image"><img src={assetUrl(project.image)} alt={`${project.title} — illustrative interior reference`} loading="lazy" decoding="async" /><span className="image-tag">Concept study</span><span className="round-arrow"><ArrowUpRight size={22} /></span></div><div className="card-meta"><div><span className="eyebrow">{project.category} / Concept {String(index + 1).padStart(2, '0')}</span><h3>{project.title}</h3></div><ArrowUpRight size={20} /></div></Link>;
 }
 export function MaterialCard({ material }: { material: typeof materials[number] }) {
  return <Link to={`/materials/${material.slug}`} className="material-card"><div aria-hidden="true" className={`material-swatch ${material.className}`} /><div className="card-meta"><div><span className="eyebrow">{material.family}</span><h3>{material.title}</h3></div><ArrowUpRight size={20} /></div></Link>;

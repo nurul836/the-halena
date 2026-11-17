@@ -1,3 +1,4 @@
+import {withBase} from './config/paths';
 import { conceptProjects, designServices } from './data/businessPages';
 import { sampleMaterials } from './catalog/sampleMaterials';
 import { business } from './config/business';
@@ -24,7 +25,7 @@ export function pageMetadata(pathname:string,materials=sampleMaterials){
  const [title,description]=metadata[path]||(item?[item.title,item.description]:['Page not found','This page could not be found.']);
  const origin=productionOrigin(); const known=Boolean(metadata[path]||item);
  const indexable=known&&!path.startsWith('/auth/')&&!path.startsWith('/ai-studio')&&path!=='/material-try-on';
- return {title:title+' — THE HALENA',description,canonical:origin?origin+path:'',image:origin?origin+'/images/business/lounge.webp':'',robots:origin&&indexable?'index, follow':'noindex, follow',known,path};
+ return {title:title+' — THE HALENA',description,canonical:origin?origin+withBase(path):'',image:origin?origin+withBase('/images/business/lounge.webp'):'',robots:origin&&indexable?'index, follow':'noindex, follow',known,path};
 }
 export function structuredData(pathname:string){const meta=pageMetadata(pathname);if(!meta.canonical||!meta.known)return null;const origin=productionOrigin();return {'@context':'https://schema.org','@type':'WebPage','@id':meta.canonical,name:meta.title,description:meta.description,url:meta.canonical,inLanguage:'en',isPartOf:{'@type':'WebSite',name:'THE HALENA',url:origin},publisher:{'@type':'Organization',name:'THE HALENA',url:origin}};}
 export function updateMetadata(pathname:string,materials=sampleMaterials){const meta=pageMetadata(pathname,materials);document.title=meta.title;

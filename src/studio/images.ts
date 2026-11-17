@@ -1,3 +1,4 @@
+import {assetUrl} from '../config/paths';
 import {validateRoomImage} from '../catalog/roomImage';
 export const MAX_ROOM_PIXELS=16000000;
 export const MAX_ROOM_SIDE=8000;
@@ -19,7 +20,7 @@ export async function decodeRoom(file:File):Promise<ImageBitmap>{
 export async function loadLocalTexture(url:string,signal:AbortSignal):Promise<HTMLImageElement>{
  signal=AbortSignal.any([signal,AbortSignal.timeout(20000)]);
  if(!/^\/images\/render-textures\/[a-z0-9_-]+\.(jpg|jpeg|png|webp)$/i.test(url))throw new Error('This texture is not approved for local preview.');
- const response=await fetch(url,{signal,credentials:'same-origin',redirect:'error'});
+ const response=await fetch(assetUrl(url),{signal,credentials:'same-origin',redirect:'error'});
  if(!response.ok)throw new Error('Texture file missing or unavailable.');
  const mime=response.headers.get('content-type')?.split(';')[0].trim()||'';
  if(!['image/jpeg','image/png','image/webp'].includes(mime))throw new Error('Texture server returned an unsupported image type.');

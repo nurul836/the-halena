@@ -1,3 +1,4 @@
+import {appBase,withBase} from './config/paths';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { MotionConfig } from 'motion/react';
@@ -14,5 +15,5 @@ const pages={AuthCallback,Home,Legal,NotFound,Materials,MaterialDetail,MaterialT
 export default function App(){return <ClientApp pages={pages}/>;}
 export { publicRoutes, pageMetadata, structuredData, productionOrigin } from './seo';
 export function render(path: string) {
-  return renderToString(<StaticRouter location={path}><MotionConfig reducedMotion="user"><App /></MotionConfig></StaticRouter>);
+  return renderToString(<StaticRouter basename={appBase} location={withBase(path)}><MotionConfig reducedMotion="user"><App /></MotionConfig></StaticRouter>);
 }

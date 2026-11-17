@@ -1,3 +1,4 @@
+import {appBase,withoutBase} from './config/paths';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
@@ -12,9 +13,9 @@ import './styles/generator.css';
 import './styles/refinement.css';
 import './styles/navigation.css';
 import './styles/account.css';
-const tree = (<React.StrictMode><BrowserRouter><MotionConfig reducedMotion="user"><App /></MotionConfig></BrowserRouter></React.StrictMode>);
+const tree = (<React.StrictMode><BrowserRouter basename={appBase}><MotionConfig reducedMotion="user"><App /></MotionConfig></BrowserRouter></React.StrictMode>);
 const root=document.getElementById('root')!;
 // Static HTML has no query-specific filter or selected-room state.
-const queryWorkspace=Boolean(window.location.search)&&/^\/(materials|material-try-on|ai-studio)(\/|$)/.test(window.location.pathname);
+const queryWorkspace=Boolean(window.location.search)&&/^\/(materials|material-try-on|ai-studio)(\/|$)/.test(withoutBase(window.location.pathname));
 if(root.dataset.prerendered&&!queryWorkspace) ReactDOM.hydrateRoot(root,tree);
 else ReactDOM.createRoot(root).render(tree);

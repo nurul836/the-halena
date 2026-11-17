@@ -1,7 +1,9 @@
+import {appBase} from '../config/paths';
 import {decodeRoom} from '../studio/images';
 export {authClient as aiAuth} from '../auth/client';
 export class GeneratorApiError extends Error{constructor(message:string,public code:string,public status:number){super(message);}}
 export async function aiRequest<T>(action:string,token?:string,body?:unknown):Promise<T>{
+ if(appBase==='/the-halena/')throw new GeneratorApiError('AI generation requires separately hosted server functions; GitHub Pages serves only the website.','NOT_CONFIGURED',503);
  let response:Response;try{response=await fetch(`/api/ai?action=${action}`,{method:body?'POST':'GET',headers:{...(token?{Authorization:`Bearer ${token}`} :{}),...(body?{'Content-Type':'application/json'}:{})},...(body?{body:JSON.stringify(body)}:{}),signal:AbortSignal.timeout(body?190000:20000),cache:'no-store'});}catch{throw new GeneratorApiError('Connection interrupted. Refresh recent requests to check whether processing completed. No request has been retried.','CONNECTION_UNCERTAIN',0);}
  let data:Record<string,unknown>;try{data=await response.json();}catch{throw new GeneratorApiError('AI generation not configured.','NOT_CONFIGURED',503);}if(!response.ok)throw new GeneratorApiError(String(data.message||'The request could not be completed.'),String(data.error||'REQUEST_FAILED'),response.status);return data as T;
 }

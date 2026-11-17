@@ -1,3 +1,4 @@
+import {withBase,withoutBase} from '../config/paths';
 import {googleEnabled} from './config';
 
 const returnKey='halena.auth.return';
@@ -16,8 +17,8 @@ export function consumeReturnPath(){
 export async function startGoogleSignIn(){
  if(!googleEnabled)throw new Error('Google sign-in is not configured yet. The studio must enable its Supabase Google provider.');
  const {authClient}=await import('./client');if(!authClient)throw new Error('Account services are unavailable.');
- try{sessionStorage.setItem(returnKey,JSON.stringify({path:safeReturnPath(location.pathname+location.search+location.hash),time:Date.now()}));}catch{/* Login can still return home when storage is restricted. */}
- const {error}=await authClient.auth.signInWithOAuth({provider:'google',options:{redirectTo:new URL('/auth/callback',location.origin).href,queryParams:{prompt:'select_account'}}});
+ try{sessionStorage.setItem(returnKey,JSON.stringify({path:safeReturnPath(withoutBase(location.pathname)+location.search+location.hash),time:Date.now()}));}catch{/* Login can still return home when storage is restricted. */}
+ const {error}=await authClient.auth.signInWithOAuth({provider:'google',options:{redirectTo:new URL(withBase('/auth/callback'),location.origin).href,queryParams:{prompt:'select_account'}}});
  if(error)throw new Error('Google sign-in could not be started. Please retry or contact the studio.');
 }
 /** The SDK exchanges PKCE once, even when StrictMode remounts the callback. */
@@ -30,5 +31,5 @@ export function completeGoogleCallback(){
   const {authClient}=await import('./client');if(!authClient)throw new Error('Account services are not configured.');
   const {data,error}=await authClient.auth.exchangeCodeForSession(code);
   if(error||!data.session||!data.user)throw new Error('This sign-in link expired or could not be verified. Start again in the same browser.');
- })().finally(()=>history.replaceState(history.state,'','/auth/callback'));
+ })().finally(()=>history.replaceState(history.state,'',withBase('/auth/callback')));
 }
